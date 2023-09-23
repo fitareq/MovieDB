@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <declare-styleable name="Graph">
+        <attr name="showVerticalAxisLabels" format="boolean" />
+        <attr name="showHorizontalAxisLabels" format="boolean" />
+        <attr name="showVerticalAxisLines" format="boolean" />
+        <attr name="drawTimeLabelsIn24hourMode" format="boolean" />
+
+        <attr name="graphFrameStrokeWidth" format="dimension" />
+        <attr name="verticalAxisLabelTextSize" format="dimension" />
+        <attr name="horizontalAxisLabelTextSize" format="dimension" />
+
+        <attr name="graphFrameColor" format="color" />
+        <attr name="verticalAxisLabelColor" format="color" />
+        <attr name="horizontalAxisLabelColor" format="color" />
+
+        <attr name="maxVerticalAxisCount" format="integer" />
+        <attr name="maxVerticalAxisValue" format="float" />
+        <attr name="minVerticalAxisValue" format="float" />
+        <attr name="verticalAxisValueLabel" format="string" />
+
+    </declare-styleable>
+
+    <declare-styleable name="LineGraph">
+        <attr name="linePointRadius" format="dimension" />
+        <attr name="lineTouchedPointRadius" format="dimension" />
+
+        <attr name="lineTouchedPointColor" format="color" />
+        <attr name="lineTouchedPointIndicatorLineColor" format="color" />
+
+        <attr name="drawLineTouchedPointIndicatorLine" format="boolean" />
+        <attr name="dialogBackgroundColor" format="color" />
+        <attr name="dialogOutlineColor" format="color" />
+    </declare-styleable>
+
+</resources>
