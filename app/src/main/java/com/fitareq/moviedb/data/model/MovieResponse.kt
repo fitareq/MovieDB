@@ -9,7 +9,7 @@ data class MovieResponse(
     var page: Int? = null,
     @SerializedName("results")
     @Expose
-    var results: ArrayList<Results> = arrayListOf(),
+    var results: ArrayList<Movie> = arrayListOf(),
     @SerializedName("total_pages")
     @Expose
     var totalPages: Int? = null,
@@ -18,7 +18,7 @@ data class MovieResponse(
     var totalResults: Int? = null
 )
 
-data class Results(
+data class Movie(
 
     @SerializedName("adult")
     @Expose
