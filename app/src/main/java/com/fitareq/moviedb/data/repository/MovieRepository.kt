@@ -1,5 +1,6 @@
 package com.fitareq.moviedb.data.repository
 
+import com.fitareq.moviedb.Utils
 import com.fitareq.moviedb.data.Api
 import com.fitareq.moviedb.data.Data
 import com.fitareq.moviedb.data.model.MovieResponse
@@ -10,7 +11,7 @@ class MovieRepository @Inject constructor(
 ) {
     suspend fun getMovies(pageNo: Int): Data<MovieResponse> {
         return try {
-            val response = api.getMovies("en-US", "c33832f707ec95387239c7014b8fb76b", pageNo)
+            val response = api.getMovies(Utils.LANGUAGE, Utils.API_KEY, pageNo)
             if (response.isSuccessful && response.body() != null) {
                 Data.Success(response.body()!!)
             } else {
