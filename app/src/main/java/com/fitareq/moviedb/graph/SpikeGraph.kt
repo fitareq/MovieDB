@@ -45,13 +45,13 @@ class SpikeGraph(context: Context, attrs: AttributeSet) : View(context, attrs) {
     }
 }
 
-class GraphView1(context: Context, attributeSet: AttributeSet) : View(context, attributeSet) {
+class GraphView(context: Context, attributeSet: AttributeSet) : View(context, attributeSet) {
 
     private val dataSet = mutableListOf<DataPoint>()
-    private var xMin = 0
-    private var xMax = 0
-    private var yMin = 0
-    private var yMax = 0
+    private var xMin = 0L
+    private var xMax = 0L
+    private var yMin = 0f
+    private var yMax = 0f
 
     private val dataPointPaint = Paint().apply {
         color = Color.BLUE
@@ -107,12 +107,13 @@ class GraphView1(context: Context, attributeSet: AttributeSet) : View(context, a
         canvas.drawLine(0f, 0f, 0f, height.toFloat(), axisLinePaint)
         canvas.drawLine(0f, height.toFloat(), width.toFloat(), height.toFloat(), axisLinePaint)
     }
-    private fun Int.toRealX() = toFloat() / xMax * width
-    private fun Int.toRealY() = toFloat() / yMax * height
+
+    private fun Long.toRealX() = toFloat() / xMax * width
+    private fun Float.toRealY() = toFloat() / yMax * height
 
 }
 
 data class DataPoint(
-    val xVal: Int,
-    val yVal: Int
+    val xVal: Long,
+    val yVal: Float
 )
