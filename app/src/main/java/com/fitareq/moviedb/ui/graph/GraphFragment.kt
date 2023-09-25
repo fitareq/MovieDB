@@ -31,10 +31,11 @@ class GraphFragment : BaseFragment() {
         }
 
         getDataFromCsv()
-        binding.graph.setData(dataPoint)
+        binding.graph.setData(data)
         return binding.root
     }
     private val dataPoint = ArrayList<DataPoint>()
+    private val data = ArrayList<Pair<Long, Float>>()
     private fun getDataFromCsv() {
         val inputStream = resources.openRawResource(R.raw.stock)
         val reader = inputStream.bufferedReader()
@@ -46,7 +47,8 @@ class GraphFragment : BaseFragment() {
             lines.forEach { line ->
                 val values = line.split(",")
                 if (values.size > 5){
-                    dataPoint.add(DataPoint( values[4].toFloat(), convertTimestampToMillis(values[0])))
+//                    dataPoint.add(DataPoint( convertTimestampToMillis(values[0]), values[4].toFloat()))
+                    data.add(Pair(convertTimestampToMillis(values[0]), values[4].toFloat()))
                     //timeStamps.add(convertTimestampToMillis(values[0]))
                     //loses.add(values[4].toFloat())
                 }

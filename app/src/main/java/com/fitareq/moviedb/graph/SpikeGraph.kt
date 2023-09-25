@@ -16,7 +16,7 @@ class SpikeGraph(context: Context, attrs: AttributeSet) : View(context, attrs) {
         invalidate()
     }
 
-    override fun onDraw(canvas: Canvas?) {
+    override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
         val paint = Paint()
@@ -38,10 +38,19 @@ class SpikeGraph(context: Context, attrs: AttributeSet) : View(context, attrs) {
         for ((timestamp, value) in dataPoints) {
             val x = prevX + scaleX
             val y = height - value * scaleY
-            canvas?.drawLine(prevX, prevY, x, y, paint)
+            canvas.drawLine(prevX, prevY, x, y, paint)
             prevX = x
             prevY = y
         }
+
+
+        canvas.drawLine(0f, 0f, 0f, height, axisLinePaint)
+        canvas.drawLine(0f, height, width, height, axisLinePaint)
+    }
+
+    private val axisLinePaint = Paint().apply {
+        color = Color.GRAY
+        strokeWidth = 10f
     }
 }
 

@@ -7,7 +7,7 @@
     android:padding="20dp"
     tools:context=".ui.graph.GraphFragment">
 
-    <com.fitareq.moviedb.graph.GraphView
+    <com.fitareq.moviedb.graph.SpikeGraph
         android:id="@+id/graph"
         android:layout_width="match_parent"
         android:layout_height="400dp" />
