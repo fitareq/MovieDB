@@ -12,12 +12,12 @@
         tools:layout="@layout/fragment_movie" />
     <fragment
         android:id="@+id/tvShowFragment"
-        android:name="com.fitareq.moviedb.ui.TVShowFragment"
+        android:name="com.fitareq.moviedb.ui.tv_show.TVShowFragment"
         android:label="fragment_t_v_show"
         tools:layout="@layout/fragment_t_v_show" />
     <fragment
         android:id="@+id/graphFragment"
-        android:name="com.fitareq.moviedb.ui.GraphFragment"
+        android:name="com.fitareq.moviedb.ui.graph.GraphFragment"
         android:label="fragment_graph"
         tools:layout="@layout/fragment_graph" />
 </navigation>

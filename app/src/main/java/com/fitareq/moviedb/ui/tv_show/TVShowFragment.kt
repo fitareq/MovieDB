@@ -1,4 +1,4 @@
-package com.fitareq.moviedb.ui.movie
+package com.fitareq.moviedb.ui.tv_show
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,20 +11,17 @@ import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import com.fitareq.moviedb.Utils
 import com.fitareq.moviedb.common.BaseFragment
-import com.fitareq.moviedb.data.Data
-import com.fitareq.moviedb.databinding.FragmentMovieBinding
+import com.fitareq.moviedb.databinding.FragmentTVShowBinding
 import com.fitareq.moviedb.ui.MainActivity
 import com.fitareq.moviedb.ui.details.DetailsActivity
-import com.fitareq.moviedb.ui.tv_show.TVPagerAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class MovieFragment : BaseFragment() {
-
-    private lateinit var binding: FragmentMovieBinding
-    private val viewModel: MovieViewModel by viewModels()
-    private lateinit var adapter: MoviePagerAdapter
+class TVShowFragment : BaseFragment() {
+    private lateinit var binding: FragmentTVShowBinding
+    private val viewModel: TVViewModel by viewModels()
+    private lateinit var adapter: TVPagerAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -35,20 +32,18 @@ class MovieFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        binding = FragmentMovieBinding.inflate(inflater, container, false)
-        adapter = MoviePagerAdapter { id ->
+        binding = FragmentTVShowBinding.inflate(inflater, container, false)
+        adapter = TVPagerAdapter { id ->
             startActivity(
-                Intent(
-                    requireActivity(),
-                    DetailsActivity::class.java
-                ).putExtra(Utils.KEY_ID, id)
-                    .putExtra(Utils.KEY_IS_MOVIE, true)
+                Intent(requireActivity(), DetailsActivity::class.java)
+                    .putExtra(Utils.KEY_ID, id)
+                    .putExtra(Utils.KEY_IS_MOVIE, false)
             )
         }
-        binding.movieList.adapter = adapter
+        binding.tvList.adapter = adapter
 
         lifecycleScope.launch {
-            viewModel.getAllMovies().observe(viewLifecycleOwner) {
+            viewModel.getAllTvShow().observe(viewLifecycleOwner) {
                 adapter.submitData(lifecycle, it)
             }
         }
@@ -58,7 +53,7 @@ class MovieFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         if (activity is MainActivity) {
-            (activity as MainActivity).setToolbarTitle("Movies")
+            (activity as MainActivity).setToolbarTitle("Tv Shows")
         }
         adapter.addLoadStateListener { loadState ->
             if (loadState.refresh is LoadState.Loading || loadState.append is LoadState.Loading)
@@ -77,7 +72,5 @@ class MovieFragment : BaseFragment() {
                 }
             }
         }
-
-
     }
 }

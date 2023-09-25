@@ -1,13 +1,14 @@
-package com.fitareq.moviedb.ui
+package com.fitareq.moviedb.ui.graph
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.fitareq.moviedb.R
+import com.fitareq.moviedb.common.BaseFragment
+import com.fitareq.moviedb.ui.MainActivity
 
-class GraphFragment : Fragment() {
+class GraphFragment : BaseFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -18,6 +19,9 @@ class GraphFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        if (activity is MainActivity){
+            (activity as MainActivity).setToolbarTitle("Graph")
+        }
         return inflater.inflate(R.layout.fragment_graph, container, false)
     }
 }

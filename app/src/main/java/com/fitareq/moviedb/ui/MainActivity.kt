@@ -21,4 +21,8 @@ class MainActivity : BaseActivity() {
         val navController = navHostFragment.findNavController()
         binding.bottomNavigationView.setupWithNavController(navController)
     }
+
+    fun setToolbarTitle(msg: String) {
+        binding.toolbar.title = msg
+    }
 }

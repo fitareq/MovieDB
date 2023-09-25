@@ -3,13 +3,13 @@ package com.fitareq.moviedb.data.model
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-data class MovieResponse(
+data class TvResponse(
     @SerializedName("page")
     @Expose
     var page: Int? = null,
     @SerializedName("results")
     @Expose
-    var results: ArrayList<Movie> = arrayListOf(),
+    var results: ArrayList<TvShow> = arrayListOf(),
     @SerializedName("total_pages")
     @Expose
     var totalPages: Int? = null,
@@ -18,8 +18,7 @@ data class MovieResponse(
     var totalResults: Int? = null
 )
 
-data class Movie(
-
+data class TvShow(
     @SerializedName("adult")
     @Expose
     var adult: Boolean? = null,
@@ -29,15 +28,15 @@ data class Movie(
     @SerializedName("id")
     @Expose
     var id: Int? = null,
-    @SerializedName("title")
+    @SerializedName("name")
     @Expose
-    var title: String? = null,
+    var name: String? = null,
     @SerializedName("original_language")
     @Expose
     var originalLanguage: String? = null,
-    @SerializedName("original_title")
+    @SerializedName("original_name")
     @Expose
-    var originalTitle: String? = null,
+    var originalName: String? = null,
     @SerializedName("overview")
     @Expose
     var overview: String? = null,
@@ -53,17 +52,17 @@ data class Movie(
     @SerializedName("popularity")
     @Expose
     var popularity: Double? = null,
-    @SerializedName("release_date")
+    @SerializedName("first_air_date")
     @Expose
-    var releaseDate: String? = null,
-    @SerializedName("video")
-    @Expose
-    var video: Boolean? = null,
+    var firstAirDate: String? = null,
     @SerializedName("vote_average")
     @Expose
     var voteAverage: Double? = null,
     @SerializedName("vote_count")
     @Expose
-    var voteCount: Int? = null
+    var voteCount: Int? = null,
+    @SerializedName("origin_country")
+    @Expose
+    var originCountry: ArrayList<String> = arrayListOf()
 
 )

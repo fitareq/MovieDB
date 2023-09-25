@@ -9,14 +9,16 @@ import com.fitareq.moviedb.Utils
 import com.fitareq.moviedb.data.Api
 import com.fitareq.moviedb.data.Data
 import com.fitareq.moviedb.data.data_source.MoviePagingSource
+import com.fitareq.moviedb.data.data_source.TVPagingSource
 import com.fitareq.moviedb.data.model.Movie
 import com.fitareq.moviedb.data.model.MovieResponse
+import com.fitareq.moviedb.data.model.TvShow
 import javax.inject.Inject
 
-class MovieRepository @Inject constructor(
+class TvRepository @Inject constructor(
     private val api: Api
 ) {
-    fun getAllMovies(): LiveData<PagingData<Movie>> {
+    fun getAllTvShow(): LiveData<PagingData<TvShow>> {
         return Pager(
             config = PagingConfig(
                 pageSize = 30,
@@ -24,7 +26,7 @@ class MovieRepository @Inject constructor(
                 initialLoadSize = 1
             ),
             pagingSourceFactory = {
-                MoviePagingSource(api)
+                TVPagingSource(api)
             },
             initialKey = 1
         ).liveData
